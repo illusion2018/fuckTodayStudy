@@ -85,6 +85,7 @@ class casLogin:
             if res.status_code == 200:
                 return self.session.cookies
             else:
+                print("ss")
                 res = self.session.get(re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0], verify=False)
                 print(res)
                 if res.status_code == 200 or res.status_code == 404:
