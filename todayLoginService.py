@@ -78,13 +78,19 @@ class TodayLoginService:
 
     # 通过登陆url判断采用哪种登陆方式
     def checkLogin(self):
+        print(self.login_url)
         if self.login_url.find('/iap') != -1:
+            print('iapLogin')
             self.loginEntity = iapLogin(self.username, self.password, self.login_url, self.login_host, self.session)
         elif self.login_url.find('kmu.edu.cn') != -1 or self.login_url.find('hytc.edu.cn') != -1:
+            print('RSA')
             self.loginEntity = RSALogin(self.username, self.password, self.login_url, self.login_host, self.session)
+            
         else:
+            print('casLogin')
             self.loginEntity = casLogin(self.username, self.password, self.login_url, self.login_host, self.session)
         # 统一登录流程
+        print('login')
         self.session.cookies = self.loginEntity.login()
         print('checkLogin')
     # 本地化登陆
