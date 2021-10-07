@@ -52,6 +52,7 @@ class casLogin:
                         params[item.get('name')] = item.get('value')
         if self.type == 0:
             salt = soup.select("#pwdDefaultEncryptSalt")
+            print('#pwdDefaultEncryptSalt')
         else:
             salt = soup.select("#pwdEncryptSalt")
         if len(salt) != 0:
