@@ -74,6 +74,7 @@ class TodayLoginService:
                     self.login_url = ampUrl2
                     self.login_host = re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0]
                 break
+        print('getLoginUrlBySchoolName')
 
     # 通过登陆url判断采用哪种登陆方式
     def checkLogin(self):
@@ -85,9 +86,10 @@ class TodayLoginService:
             self.loginEntity = casLogin(self.username, self.password, self.login_url, self.login_host, self.session)
         # 统一登录流程
         self.session.cookies = self.loginEntity.login()
-
+        print('checkLogin')
     # 本地化登陆
     def login(self):
         # 获取学校登陆地址
         self.getLoginUrlBySchoolName()
         self.checkLogin()
+        print('Login')
