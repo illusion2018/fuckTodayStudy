@@ -61,7 +61,7 @@ class casLogin:
             salt = re.findall(pattern, html)
             print('salt',len(salt),salt)
             if (len(salt) != 0):
-                salt = salt[2]
+                salt = salt[1]
             else:
                 salt = False
         print(salt)
