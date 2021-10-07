@@ -32,6 +32,7 @@ class casLogin:
     def login(self):
         html = self.session.get(self.login_url, verify=False).text
         soup = BeautifulSoup(html, 'lxml')
+        print(soup)
         form = soup.select('#casLoginForm')
         if len(form) == 0:
             form = soup.select("#loginFromId")
@@ -53,7 +54,7 @@ class casLogin:
             salt = soup.select("#pwdDefaultEncryptSalt")
         else:
             salt = soup.select("#pwdEncryptSalt")
-        print(salt)
+        print(len(salt))
         if len(salt) != 0:
             salt = salt[0].get('value')
         else:
