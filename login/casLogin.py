@@ -81,8 +81,9 @@ class casLogin:
         if data.status_code == 302:
             jump_url = data.headers['Location']
             self.session.headers['Server'] = 'CloudWAF'
+            print(res,'rresswww',jump_url)
             res = self.session.get(jump_url, verify=False)
-            print(res,rresswww)
+            print(res,'rresswww')
             if res.status_code == 200:
                 return self.session.cookies
             else:
