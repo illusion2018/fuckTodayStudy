@@ -57,9 +57,9 @@ class casLogin:
         if len(salt) != 0:
             salt = salt[0].get('value')
         else:
-            print(len(salt))
             pattern = '\"(\w{16})\"'
-            salt = re.findall(pattern, str(soup))
+            salt = re.findall(pattern, html)
+            print('salt',len(salt))
             if (len(salt) == 1):
                 salt = salt[0]
             else:
