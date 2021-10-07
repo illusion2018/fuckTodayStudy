@@ -32,7 +32,6 @@ class casLogin:
     def login(self):
         html = self.session.get(self.login_url, verify=False).text
         soup = BeautifulSoup(html, 'lxml')
-        print(html)
         form = soup.select('#casLoginForm')
         if len(form) == 0:
             form = soup.select("#loginFromId")
@@ -87,6 +86,7 @@ class casLogin:
                 return self.session.cookies
             else:
                 res = self.session.get(re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0], verify=False)
+                print(res)
                 if res.status_code == 200 or res.status_code == 404:
                     return self.session.cookies
                 else:
