@@ -95,7 +95,7 @@ class casLogin:
         elif data.status_code == 200:
             data = data.text
             soup = BeautifulSoup(data, 'lxml')
-            print(soup)
+            print(data,self.type)
             if self.type == 0:
                 msg = soup.select('#errorMsg')[0].get_text()
             else:
