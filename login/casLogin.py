@@ -76,7 +76,7 @@ class casLogin:
                     imgUrl = self.host + 'authserver/getCaptcha.htl'
                     params['captcha'] = Utils.getCodeFromImg(self.session, imgUrl)
         data = self.session.post(self.login_url, params=params, allow_redirects=False)
-        print("ss")
+        print("ss",data.status_code)
         # 如果等于302强制跳转，代表登陆成功
         if data.status_code == 302:
             jump_url = data.headers['Location']
