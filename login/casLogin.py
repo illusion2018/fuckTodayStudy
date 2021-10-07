@@ -98,7 +98,7 @@ class casLogin:
             print(data,self.type)
             if self.type == 0:
                 print('485489465156')
-                msg = soup.select('#errorMsg')[0].get_text()
+                #msg = soup.select('#errorMsg')[0].get_text()
                 print(msg)
             else:
                 msg = soup.select('#formErrorTip2')[0].get_text()
