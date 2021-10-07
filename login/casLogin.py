@@ -58,7 +58,6 @@ class casLogin:
         else:
             pattern = '\"(\w{16})\"'
             salt = re.findall(pattern, html)
-            print('salt',len(salt),salt)
             if (len(salt) != 0):
                 salt = salt[1]
             else:
@@ -77,6 +76,7 @@ class casLogin:
                     imgUrl = self.host + 'authserver/getCaptcha.htl'
                     params['captcha'] = Utils.getCodeFromImg(self.session, imgUrl)
         data = self.session.post(self.login_url, params=params, allow_redirects=False)
+        print("ss")
         # 如果等于302强制跳转，代表登陆成功
         if data.status_code == 302:
             jump_url = data.headers['Location']
@@ -85,9 +85,8 @@ class casLogin:
             if res.status_code == 200:
                 return self.session.cookies
             else:
-                print("ss")
                 res = self.session.get(re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0], verify=False)
-                print(res)
+                print(res,"ress")
                 if res.status_code == 200 or res.status_code == 404:
                     return self.session.cookies
                 else:
