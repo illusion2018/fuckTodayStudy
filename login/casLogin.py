@@ -40,7 +40,6 @@ class casLogin:
             soup = BeautifulSoup(str(form[1]), 'lxml')
             self.type = 1
         # 填充数据
-        print(form)
         params = {}
         form = soup.select('input')
         for item in form:
@@ -52,9 +51,9 @@ class casLogin:
                         params[item.get('name')] = item.get('value')
         if self.type == 0:
             salt = soup.select("#pwdDefaultEncryptSalt")
-            print('#pwdDefaultEncryptSalt')
         else:
             salt = soup.select("#pwdEncryptSalt")
+        print(salt)
         if len(salt) != 0:
             salt = salt[0].get('value')
         else:
@@ -64,6 +63,7 @@ class casLogin:
                 salt = salt[0]
             else:
                 salt = False
+        print('salt')
         params['username'] = self.username
         if not salt:
             params['password'] = self.password
