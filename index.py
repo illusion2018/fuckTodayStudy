@@ -20,7 +20,7 @@ def getYmlConfig(yaml_file='config.yml'):
 def main():
     config = getYmlConfig()
     for index, user in enumerate(config['users']):
-        print(f'{Utils.getAsiaTime()} 第{index + 1}个用户正在执行...')
+        print(f'{Utils.getAsiaTime()} 第{index}个用户正在执行...')
         rl = RlMessage(user['user']['sendKey'], config['emailApiUrl'], config['myQmsgKey'], config['sendType'])
         if config['debug']:
             msg = working(user)
