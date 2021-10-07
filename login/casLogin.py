@@ -64,7 +64,7 @@ class casLogin:
                 salt = salt[0]
             else:
                 salt = False
-        print('salt')
+        print(salt)
         params['username'] = self.username
         if not salt:
             params['password'] = self.password
