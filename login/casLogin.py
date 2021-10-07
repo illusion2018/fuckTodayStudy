@@ -82,11 +82,13 @@ class casLogin:
             jump_url = data.headers['Location']
             self.session.headers['Server'] = 'CloudWAF'
             res = self.session.get(jump_url, verify=False)
+            print(res,rresswww)
             if res.status_code == 200:
                 return self.session.cookies
             else:
-                res = self.session.get(re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0], verify=False)
                 print(res,"ress")
+                res = self.session.get(re.findall(r'\w{4,5}\:\/\/.*?\/', self.login_url)[0], verify=False)
+                
                 if res.status_code == 200 or res.status_code == 404:
                     return self.session.cookies
                 else:
