@@ -40,6 +40,7 @@ class casLogin:
             soup = BeautifulSoup(str(form[1]), 'lxml')
             self.type = 1
         # 填充数据
+        print(form)
         params = {}
         form = soup.select('input')
         for item in form:
