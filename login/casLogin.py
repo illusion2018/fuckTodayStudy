@@ -81,9 +81,7 @@ class casLogin:
         if data.status_code == 302:
             jump_url = data.headers['Location']
             self.session.headers['Server'] = 'CloudWAF'
-            print(res,'rresswww',jump_url)
             res = self.session.get(jump_url, verify=False)
-            print(res,'rresswww')
             if res.status_code == 200:
                 return self.session.cookies
             else:
@@ -97,6 +95,7 @@ class casLogin:
         elif data.status_code == 200:
             data = data.text
             soup = BeautifulSoup(data, 'lxml')
+            print(soup)
             if self.type == 0:
                 msg = soup.select('#errorMsg')[0].get_text()
             else:
